@@ -17,6 +17,10 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     transform: translate(-50%, -50%);
     background-color: #bbb;
     border: 4px solid #999;
+    border-top: 4px solid #ddd;
+    border-left: 4px solid #ddd;
+
+
 
 }
     .minesweeper > .header{
@@ -24,7 +28,9 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         width: 100%;
         float: left;
         padding: 5px;
-        border-bottom: 4px solid #999;
+        border: 4px solid #999;
+        border-bottom: 4px solid #ddd;
+        border-right: 4px solid #ddd;
 
     }
         .minesweeper > .header > .counter{
@@ -44,7 +50,7 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             line-height: 24px;
             font-size: 20px;
             text-align: center;
-            margin: 0 calc(50% - 74px);
+            margin: 0 calc(50% - 72px);
             transform: rotate(90deg);
             background-color: #999;
             border-radius: 15px;
@@ -64,6 +70,8 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         width: 30px;
         height: 30px;
         border: 2px solid #999;
+        border-top: 2px solid #ddd;
+        border-left: 2px solid #ddd;
         text-align: center;
         font-size: 18px;
         line-height: 30px;
@@ -72,4 +80,6 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         background-color: #aaa;
         cursor: pointer;
     }
-
+    .minesweeper > .field > .cell.clicked{
+        background-color: #eee;
+    }

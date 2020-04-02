@@ -1,12 +1,15 @@
+import Cell from './Cell.js';
 
 class Minisweeper{
     constructor(target, widht, height, bombsPercentage){
         this.target = target;
         this.DOM = null;
+        this.DOMfield = null;
         this.widht = widht;
         this.height = height;
         this.bombs = bombsPercentage;
         this.bombsCount = 1;
+        this.clickCount = 0;
 
         this.init();
     }
@@ -43,31 +46,39 @@ class Minisweeper{
         
     }
     renderGame(){
-        let cellHTML = ``;
-        for (let i = 0; i < this.widht*this.height; i++) {
-            cellHTML += `<div class="cell">${i+1}</div>`
-        }
-
-
+    
         let HTML = `<div class="header">
                         <div class="counter bombs">099</div>
                         <div class="smile">: )</div>
                         <div class="counter timer">000</div>
                     </div>
-                    <div class="field">
-                        ${cellHTML}
-                    </div>`;
+                    <div class="field"></div>`;
         this.DOM.classList.add('minesweeper')
         this.DOM.innerHTML = HTML;
+        this.DOMfield  = this.DOM.querySelector(`.field`);
 
-        const cells = document.querySelectorAll('.cell');
-        for (let i = 0; i < cells.length; i++) {
-            cells[i].addEventListener('click', (event) => {this.clickCell(event)})
+        for (let i = 0; i < this.widht*this.height; i++) {
+            new Cell(i, this);
         }
     }
-    clickCell(event){
-        console.log(event.target.innerText);
-                
+    createBombs(cellIndex){
+        console.log('creating bombs'+cellIndex);
+
+        let list = [];
+        for(let i = 0; i<this.bombs; i++){
+            const position = Math.floor(Math.random()*this.widht*this.height);
+            if(list.indexOf(position === -1 && position!== cellIndex)){
+                list.push(position);
+        
+            }
+            else{i--;}
+        }
+    }
+    checkCell(cellIndex){
+        if(this.clickCount===0){
+            this.createBombs(cellIndex);
+            this.clickCount++;
+        }
     }
 
 }
