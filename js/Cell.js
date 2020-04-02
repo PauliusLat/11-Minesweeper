@@ -22,7 +22,7 @@ class Cell{
     }
     addBomb(){
         this.hasBomb = true;
-        // this.DOM.innerText = 'B';
+        this.DOM.innerText = 'B';
     }
 }
 

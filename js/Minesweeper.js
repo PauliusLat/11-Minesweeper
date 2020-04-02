@@ -43,8 +43,7 @@ class Minisweeper{
         const bombsCount = Math.floor(this.widht * this.height * this.bombs / 100);
         if(this.bombsCount > 0){
             this.bombsCount = bombsCount;
-        }
-        
+        }        
     }
     renderGame(){
     
@@ -63,12 +62,10 @@ class Minisweeper{
         }
     }
     createBombs(cellIndex){
-        console.log('creating bombs'+cellIndex);
-
         let list = [];
-        for(let i = 0; i<this.bombs; i++){
+        for(let i = 0; i<this.bombsCount; i++){
             const position = Math.floor(Math.random()*this.widht*this.height);
-            if(list.indexOf(position === -1 && position!== cellIndex)){
+            if(list.indexOf(position) === -1 && position!== cellIndex){
                 list.push(position);
                 this.cells[position].addBomb();
             }
@@ -83,6 +80,6 @@ class Minisweeper{
     }
 
 }
-const game = new Minisweeper("#game", 10, 10, 50);
+const game = new Minisweeper("#game", 10, 10, 10);
 
 console.log(game);
