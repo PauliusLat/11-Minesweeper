@@ -10,6 +10,7 @@ class Minisweeper{
         this.bombs = bombsPercentage;
         this.bombsCount = 1;
         this.clickCount = 0;
+        this.cells = [];
 
         this.init();
     }
@@ -58,7 +59,7 @@ class Minisweeper{
         this.DOMfield  = this.DOM.querySelector(`.field`);
 
         for (let i = 0; i < this.widht*this.height; i++) {
-            new Cell(i, this);
+            this.cells.push( new Cell(i, this));
         }
     }
     createBombs(cellIndex){
@@ -69,7 +70,7 @@ class Minisweeper{
             const position = Math.floor(Math.random()*this.widht*this.height);
             if(list.indexOf(position === -1 && position!== cellIndex)){
                 list.push(position);
-        
+                this.cells[position].addBomb();
             }
             else{i--;}
         }
@@ -82,6 +83,6 @@ class Minisweeper{
     }
 
 }
-const game = new Minisweeper("#game", 10, 10, 15);
+const game = new Minisweeper("#game", 10, 10, 50);
 
 console.log(game);
