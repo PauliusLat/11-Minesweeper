@@ -5,6 +5,7 @@ padding: 0;
 vertical-align: top;
 box-sizing: border-box;
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+user-select: none;
 }
 
 .minesweeper{
@@ -56,6 +57,10 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             border-radius: 15px;
             /* box-shadow: 0 0 2px #777; */
         }
+        .minesweeper > .header > .smile.lost{
+            background-color: red;
+        }
+
         .minesweeper > .header > .counter.timer{
             float: right;
         }
@@ -82,4 +87,11 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
     .minesweeper > .field > .cell.clicked{
         background-color: #eee;
+        border: 2px solid #999;
+        border-bottom: 2px solid #ddd;
+        border-right: 2px solid #ddd;
     }
+    .minesweeper > .field > .cell.bomb{
+        background-color: red;
+    }
+
