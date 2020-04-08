@@ -73,7 +73,7 @@ class Minisweeper{
         
         this.bombCounter = new BombCounter(this.DOMheader, this.bombsCount);
         this.smile = new Smile(this.DOMheader, this);
-        this.timer = new Timer(this.DOMheader);
+        this.timer = new Timer(this.DOMheader, this);
 
        
 
@@ -102,6 +102,7 @@ class Minisweeper{
 
         if(this.clickCount===0){
             this.createBombs(cellIndex);
+            this.timer.start();
         }
         this.clickCount++;
 
@@ -131,6 +132,8 @@ class Minisweeper{
         if(this.isWin()){
             this.canPlay = false;
             this.smile.win();
+            this.timer.stop();
+
         }
     }
 
@@ -174,11 +177,13 @@ class Minisweeper{
     gameOver(){
         this.canPlay = false;
         this.smile.sad();
-        console.log('Game Over...');
-        
+        this.timer.stop();
+    }
+    updateBombCounter(value){
+        this.bombCounter.update(value);
     }
 
 }
-const game = new Minisweeper("#game", 7, 7, 10);
+const game = new Minisweeper("#game", 12, 12, 10);
 
 console.log(game);

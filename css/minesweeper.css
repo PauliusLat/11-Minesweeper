@@ -80,6 +80,7 @@ user-select: none;
         text-align: center;
         font-size: 18px;
         line-height: 30px;
+        position: relative;
     }
      .minesweeper > .field > .cell:hover{
         background-color: #aaa;
@@ -95,3 +96,14 @@ user-select: none;
         background-color: red;
     }
 
+    .minesweeper > .field > .cell.flag::before{
+        display: inline-block;
+        content: '';
+        position: absolute;
+        top: 9px;
+        left: 9px;
+        width: 9px;
+        height: 9px;
+        background-color: #222;
+        border-radius: 50%;;
+    }
